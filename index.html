@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Aesthetic</title>
+    
+    <!-- Import Font Cantik dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variabel Warna Aesthetic (Soft/Pastel) */
+        :root {
+            --bg-color: #fdf6f0; /* Warna background krem lembut */
+            --text-color: #4a4a4a;
+            --accent-color: #d4a373; /* Warna coklat caramel */
+            --secondary-color: #e9c46a; /* Warna kuning mustard lembut */
+            --white-transparent: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Container dengan animasi muncul */
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Transparan */
+        header {
+            padding: 20px 0;
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--text-color);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section (Profil) dengan Background Shape */
+        #profil {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        /* Dekorasi Background (Circle Blur) */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .shape1 { width: 400px; height: 400px; background: #e9c46a; top: -100px; left: -100px; }
+        .shape2 { width: 300px; height: 300px; background: #d4a373; bottom: 0; right: -50px; }
+
+        .profile-card {
+            background: var(--white-transparent);
+            backdrop-filter: blur(10px); /* Efek Kaca (Glassmorphism) */
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            animation: fadeInUp 1s ease;
+        }
+
+        /* PERBAIKAN FOTO PROFIL */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Membuat bentuk bulat */
+            object-fit: cover; /* Crop bagian tengah untuk foto profil */
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: block; /* Menghindari space di bawah gambar */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Biodata Box */
+        .biodata-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .biodata-box {
+            flex: 1;
+            min-width: 300px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .biodata-box table td {
+            padding: 8px 0;
+            font-size: 15px;
+        }
+
+        .biodata-box table td:first-child {
+            font-weight: 600;
+            width: 40%;
+        }
+
+        /* Gallery Hobi (Card Style) - PERBAIKAN UTAMA DI SINI */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .karya-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            width: 300px;
+            text-align: left;
+        }
+
+        .karya-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Area pembungkus gambar di gallery */
+        .image-wrapper {
+            width: 100%;
+            height: 200px;
+            background-color: #faf3ee; /* Warna background agar tidak putih polos jika gambar kecil */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px; /* Memberikan jarak agar gambar tidak menempel pinggir */
+        }
+
+        /* PERBAIKAN: Gambar menjadi lebih kecil dan mengikuti bentuk aslinya */
+        .karya-card img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain; /* Ini membuat gambar TIDAK terpotong dan terlihat utuh */
+            border-radius: 10px; /* Sedikit lengkungan sudut agar aesthetic */
+        }
+
+        .karya-content {
+            padding: 20px;
+        }
+
+        .karya-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .karya-content p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Kontak Section */
+        #kontak {
+            background-color: #fff;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn-contact {
+            text-decoration: none;
+            color: #fff;
+            background-color: var(--text-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-contact:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--bg-color);
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Animasi Sederhana */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MY PORTOFOLIO</div>
+        <nav>
+            <ul>
+                <li><a href="#MY PROFILE">PROFILE</a></li>
+                <li><a href="#ABOUT ME">ABOUT ME</a></li>
+                <li><a href="#MY HOBBY">RESULTS</a></li>
+                <li><a href="#CONTACT ME">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Profil Section -->
+    <section id="profil">
+        <div class="bg-shape shape1"></div>
+        <div class="bg-shape shape2"></div>
+        <div class="profile-card">
+            <!-- Ganti src dengan foto kamu -->
+            <img src="jalan.jpeg" alt="Foto Profil" class="profile-img">
+            <h1>Putri Yuliana Mayzahra</h1>
+            <p class="tagline">Salah satu remaja yang suka mencoba hal baru</p>
+            <p style="margin-top: 15px; font-size: 14px; max-width: 400px;">
+                Selamat Datang di Portofolio Saya!! Disini saya akan berbagi tentang sedikit diri saya, hobi, dan beberapa karya yang sudah saya buat.. Semoga kalian suka dengan hasilnya yaaa...
+            </p>
+        </div>
+    </section>
+
+    <!-- Tentang Section -->
+    <section id="tentang">
+        <div class="container">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="biodata-container">
+                <div class="about-text">
+                    <p>Haiii Semuaa!! Perkenalkan Nama saya PUTRI YULIANA MAYZAHRA, Saya biasa dipanggil orang-orang dengan sebutan "PUTRI", Salam Kenal Semuaa.. Saya adalah salah satu seseorang pelajar SMK Negeri 1 Nganjuk yang mengambil salah satu konsentrasi keahlian PENGEMBANGAN GIM.
+                        Saya salah satu Remaja yang sangat menyukai mencoba hal-hal baru. Saya sekarang sedang mencoba mengedit foto-foto yang terlihat biasa menjadi lebih aesthetic dengan menambah sedikit hiasan.</p>
+                </div>
+                <div class="biodata-box">
+                    <h3 style="margin-bottom: 15px; font-family: 'Playfair Display';">KENAL LEBIH JAUH YUKK..</h3>
+                    <table>
+                        <tr>
+                            <td>Nama Lengkap</td>
+                            <td>: Putri Yuliana Mayzahra</td>
+                        </tr>
+                        <tr>
+                            <td>Tempat Tanggal Lahir</td>
+                            <td>: Nganjuk, 01 MEI 2009</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>: Jl. Letjend Suprapto IB, Ploso Bonggah , Nganjuk</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>: Siswi Pelajar SMK Negeri 1 Nganjuk</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobi Section -->
+    <section id="hobi">
+        <div class="container">
+            <h2 class="section-title">Hobi & Karya</h2>
+            <p style="max-width: 600px; margin: 0 auto; color: #666;">
+                Hobi saya adalah suka mengabadikan momen momen yang saya lakukan dan Saya senang mengedit momen tersebut menjadi sesuatu yang menarik secara visual.
+            </p>
+            
+            <div class="gallery">
+                <!-- Karya 1 -->
+                <div class="karya-card">
+                    <div class="image-wrapper">
+                        <!-- Ganti link ini dengan foto karyamu -->
+                        <img src="aku.jpeg" alt="Karya 1">
+                    </div>
+                    <div class="karya-content">
+                        <h4>Hasil Editan Pertamaa : </h4>
+                        <p>Foto tersebut merupakan hasil editan pertama saya yang menggunakan aplikasi pinterest. 
+                        Saya mengubah foto yang semula terlihat biasa menjadi lebih aesthetic dengan menambahkan hiasan seperti aneka Kue-Kue.</p>
+                    </div>
+                </div>
+                <!-- Karya 2 -->
+                <div class="karya-card">
+                    <div class="image-wrapper">
+                        <!-- Ganti link ini dengan foto karyamu -->
+                        <img src="putri.jpeg" alt="Karya 2">
+                    </div>
+                    <div class="karya-content">
+                        <h4>Hasil Editan Keduaa : </h4>
+                        <p>Foto tersebut merupakan hasil editan kedua saya yang juga menggunakan aplikasi pinterest. 
+                        Saya mengubah foto-foto bersama teman saya yang semula terpisah dan terlihat biasa menjadi berkolase dan lebih aesthetic dengan menambahkan sedikit hiasan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="Contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <p style="color: #666;">Tertarik untuk berkolaborasi atau sekadar say hello? Hubungi saya di bawah ini.</p>
+            <div class="contact-links">
+                <!-- Ganti href dengan link Instagrammu -->
+                <a href="https://www.instagram.com/ptrylnzhr?igsh=OTUzdmluOTRkcXpq" target="_blank" class="btn-contact">Instagram</a>
+                <!-- Ganti href dengan emailmu (mailto:email@gmail.com) -->
+                <a href="mailto:py3023917@gmail.com" class="btn-contact">Email Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Dibuat dengan penuh effort @2026 Putri Yuliana Mayzahra</p>
+    </footer>
+
+</body>
+</html>
